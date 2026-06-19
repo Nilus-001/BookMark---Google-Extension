@@ -39,11 +39,11 @@ Ceci est un prototype : pour le moment cette extention ne permet pas de supprime
 
 ## Suite du Projet
 
--> implementation du bouton gerer : 
+- implementation du bouton gerer : 
     - panel des data + suppression manuelle
     - blacklist url
     - setting auto suppression
--> modifier le fonctionnement de la sauvegarde de position pour la rendre individuellement activable par pages
+- modifier le fonctionnement de la sauvegarde de position pour la rendre individuellement activable par pages
 
 
 

@@ -1,0 +1,28 @@
+{
+    "name": "BookMark Extension",
+    "description": "Basic BookMark Extention for Pages",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions":[
+        "contextMenus",
+        "scripting",
+        "activeTab",
+        "storage"
+    ],
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["scripts/bookmark_content.js"]
+    }],
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": "images/BookMarkLogo.png"
+    },
+    "background":{
+        "service_worker":"scripts/bookmark_bg.js"
+    },
+    "icons": {
+        "16": "images/BookMarkLogo.png",
+        "48": "images/BookMarkLogo.png",
+        "128": "images/BookMarkLogo.png"
+    }
+}

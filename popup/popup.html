@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookMark</title>
+  <link rel="stylesheet" href="popup.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+  <div class="popup">
+
+    <!-- Patte marque-page -->
+    <div class="bookmark-tag" aria-hidden="true"></div>
+
+    <!-- En-tête -->
+    <header class="popup__header">
+      <div class="logo">
+        <i class="ti ti-bookmark" aria-hidden="true"></i>
+      </div>
+      <span class="popup__title">BookMark</span>
+      <button class="btn-icon" id="btn-options" aria-label="Ouvrir les options"> <!--todo :[LATER or NEVER] option -->
+        <i class="ti ti-dots" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <!-- Bannière stats -->
+    <section class="banner" aria-label="Résumé">
+      <div class="add-bar">
+        <button class="add-btn" id="btn-place" aria-label="Ajouter un marqueur">
+          <i class="ti ti-text-plus" aria-hidden="true"></i>
+          Marquer la sélection
+        </button>
+        <p class="add-hint">Sélectionne un mot sur la page, puis clique <strong>Marquer</strong></p>
+      </div>
+    </section>
+
+    <!-- Zone Marques    -->
+    <section class="section" aria-labelledby="section-page-title">
+
+      <div class="section__head">
+        <h2 class="section__title" id="section-page-title">Sur cette page</h2>
+        <span class="count-badge">0</span>
+      </div>
+
+      <ul class="bm-list" role="list" id="button-mark-list">
+
+        <!--          mark button spawn here        -->
+
+      </ul>
+
+      <div class="clear-row">
+        <span class="clear-link">Tout effacer</span>
+      </div>
+
+    </section>
+
+    <!-- Zone options -->
+    <section class="section" aria-labelledby="opts-title">
+      <div class="section__head">
+        <h2 class="section__title" id="opts-title">Options</h2>
+      </div>
+
+
+      <!-- Toggles -->
+      <div class="option-list">
+
+        <div class="option-row">
+          <label class="option-label" for="toggle-save-auto">
+            <i class="ti ti-device-floppy" aria-hidden="true"></i>
+            Sauvegarder la position à la fermeture
+          </label>
+          <button
+            class="toggle toggle--on"
+            role="switch"
+            aria-checked="true"
+            id="toggle-save-auto"
+            aria-label="Auto-Save"
+          ></button>
+
+        </div>
+
+        <div class="option-row">
+          <label class="option-label" for="toggle-float-btn">
+            <i class="ti ti-message-2-plus" aria-hidden="true"></i>
+            Activer le bouton float dès la selection
+          </label>
+          <button
+                  class="toggle toggle--on"
+                  role="switch"
+                  aria-checked="true"
+                  id="toggle-float-btn"
+                  aria-label="Float-Button"
+          ></button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Pied de popup -->
+    <footer class="popup__footer">
+      <span class="status">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span class="status__text">Actif</span> <!--todo : is or no active  -->
+      </span>
+      <a href="#" class="footer-link" id="btn-manage">  <!--todo :[LATER] to favorite   -->
+        Gérer
+        <i class="ti ti-arrow-right" aria-hidden="true"></i>
+      </a>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+/* ============================================================
+   BookMark — Extension Chrome
+   popup.css
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. TOKENS
+   ------------------------------------------------------------ */
+:root {
+  /* Palette principale */
+  --color-red:          #c0392b;
+  --color-red-hover:    #d44637;
+  --color-red-dim:      rgba(192, 57, 43, 0.15);
+  --color-red-border:   rgba(192, 57, 43, 0.40);
+
+  /* Surfaces */
+  --color-bg-base:      #1e1e24;   /* fond popup */
+  --color-bg-raised:    #252530;   /* cartes / boutons */
+  --color-bg-hover:     #2d2d3a;   /* hover interactif */
+  --color-bg-banner:    rgba(26, 22, 32 ,0.7);   /* bannière */
+
+  /* Bordures */
+  --color-border:       #2e2e38;
+  --color-border-hover: #45455a;
+  --color-border-item: #25252f;
+
+  /* Texte */
+  --color-text-primary:   #f0eee8;
+  --color-text-secondary: #a09da6;
+  --color-text-muted:     #666672;
+  --color-text-faint:     #444450;
+
+  /* Status */
+  --color-success:      #27ae60;
+
+  /* Toggle */
+  --toggle-off-bg:      #333340;
+  --toggle-on-bg:       var(--color-red);
+
+  /* Dot couleurs marque-pages */
+
+
+  /* Surlignage */
+  --color-mark-bg:   rgba(192, 57, 43, 0.20);
+  --color-mark-text: #e07060;
+
+  /* Géométrie */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-xl:   14px;
+
+  /* Espacement de base */
+  --space-xs:  6px;
+  --space-sm:  10px;
+  --space-md:  14px;
+  --space-lg:  16px;
+  --space-xl:  20px;
+
+  /* Typographie */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-xs:   10px;
+  --font-size-sm:   11px;
+  --font-size-base: 12px;
+  --font-size-md:   15px;
+  --font-size-lg:   16px;
+  --font-size-xl:   26px;
+
+  /* Popup chrome */
+  --popup-width: 340px;
+
+  /* Transitions */
+  --transition-fast: 0.13s ease;
+}
+
+
+/* ------------------------------------------------------------
+   2. RESET MINIMAL
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: var(--popup-width);
+  min-height: 100px;
+  font-family: var(--font-sans);
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul { list-style: none; }
+a  { text-decoration: none; }
+
+/* ------------------------------------------------------------
+   3. POPUP SHELL
+   ------------------------------------------------------------ */
+.popup {
+  width: var(--popup-width);
+  background: var(--color-bg-base);
+
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--color-border);
+}
+
+
+/* ------------------------------------------------------------
+   4. PATTE MARQUE-PAGE
+   ------------------------------------------------------------ */
+.bookmark-tag {
+  position: absolute;
+  top: -2px;
+  right: 70px;
+  width: 20px;
+  height: 44px;
+  background: var(--color-red);
+  
+  z-index: 10;
+}
+
+.bookmark-tag::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left:  10px solid var(--color-red);
+  border-right: 11px solid var(--color-red);
+  border-bottom: 10px solid transparent;
+}
+
+
+/* ------------------------------------------------------------
+   5. EN-TÊTE
+   ------------------------------------------------------------ */
+.popup__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg) 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Logo */
+.logo {
+  width: 30px;
+  height: 30px;
+  background: var(--color-red);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: var(--font-size-md);
+}
+
+.popup__title {
+  flex: 1;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Bouton icône générique */
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 18px;
+  padding: var(--radius-sm) var(--space-xs);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-icon:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-secondary);
+}
+
+.btn-icon:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   6. BANNIÈRE
+   ------------------------------------------------------------ */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-xl);
+  height: 80px;
+  background:  linear-gradient(135deg, #2a1a1a 0%, #2d1f2a 50%, #1a1a2e 100%);;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.banner__label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   6.1 BARRE "MARQUER"
+   ------------------------------------------------------------ */
+.add-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(20px, 10px) var(--space-xl);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+
+.add-btn {
+  flex: 1;
+  background: var(--color-red);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 520;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-banner);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  gap: 5px;
+  cursor: pointer;
+  transition:
+          background var(--transition-fast),
+          border-color var(--transition-fast);
+}
+
+.add-btn:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-red-border);
+}
+
+.add-btn:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+.add-btn .ti {
+  font-size: 18px;
+
+  transition: color var(--transition-fast);
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+.add-hint {
+  flex: 1.2;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.add-hint strong {
+  color: #888;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------------
+   7. SECTIONS GÉNÉRIQUES
+   ------------------------------------------------------------ */
+.section {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section__title {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+}
+
+.section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.count-badge {
+  background: var(--color-bg-raised);
+  border-radius: 20px;
+  padding: 2px 7px;
+  font-size: var(--font-size-xs);
+  color: #777;
+}
+
+
+
+/* ------------------------------------------------------------
+   8. TOGGLES
+   ------------------------------------------------------------ */
+.option-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-sm);
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.option-label .ti {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.toggle {
+  width: 34px;
+  height: 19px;
+  border-radius: 10px;
+  background: var(--toggle-off-bg);
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border-hover);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left var(--transition-fast);
+}
+
+.toggle--on,
+.toggle[aria-checked="true"] {
+  background: var(--toggle-on-bg);
+  border-color: var(--toggle-on-bg);
+}
+
+.toggle--on::after,
+.toggle[aria-checked="true"]::after {
+  left: 17px;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+
+
+/* ------------------------------------------------------------
+   9. LISTE MARQUE-PAGES
+   ------------------------------------------------------------ */
+.bm-list {
+  padding: 0 var(--space-md);
+}
+
+.bm-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: 7px 6px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border-item);
+  transition: background var(--transition-fast);
+}
+
+.bm-item:last-child { border-bottom: none; }
+.bm-item:hover { background: var(--color-bg-raised); }
+
+/* Pastille couleur */
+.bm-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-sm);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+
+/* Texte */
+.bm-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.bm-word {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: #e0ddd8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bm-context {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 0 solid var(--color-bg-hover) ;
+  border-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bm-context:focus {
+  border: 0;
+  outline: none;
+  color: var(--color-text-secondary);
+}
+
+.bm-context mark {
+  background: var(--color-mark-bg);
+  color: var(--color-mark-text);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Actions au survol */
+.bm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.bm-item:hover .bm-actions { opacity: 1; }
+
+.bm-act {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-size: var(--font-size-base);
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.bm-del:hover { color: var(--color-red); background: #2e2020; }
+.bm-del:focus-visible { outline: 2px solid var(--color-red); outline-offset: 1px; }
+
+
+.bm-edit:hover  {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+.bm-edit:focus-visible {
+  outline-color: var(--color-bg-raised);
+}
+/* ------------------------------------------------------------
+   10. LIEN "TOUT EFFACER"
+   ------------------------------------------------------------ */
+.clear-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--space-sm) ;
+}
+
+.clear-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-raised);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  padding: 5px;
+  border-radius: var(--radius-lg);
+}
+
+.clear-link:hover {
+  color: var(--color-red-hover);
+  background: var(--color-red-dim);
+}
+
+/* ------------------------------------------------------------
+   11. PIED DE POPUP
+   ------------------------------------------------------------ */
+.popup__footer {
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Statut actif */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status__dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-success);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Lien */
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link .ti {
+  font-size: 12px;
+  transition: transform var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-red);
+}
+
+.footer-link:hover .ti {
+  transform: translateX(2px);
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

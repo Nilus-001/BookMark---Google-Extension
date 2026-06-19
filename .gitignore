@@ -1,0 +1,16 @@
+# WebStorm / JetBrains
+.idea/
+*.iml
+out/
+
+# Autres IDE (au cas où)
+.vscode/
+
+# Build / packaging extension
+*.zip
+*.crx
+*.pem
+
+# Fichiers temporaires
+*.tmp
+*.bak

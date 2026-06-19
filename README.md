@@ -4,7 +4,7 @@ Extension Chrome qui permet de **placer des marque-pages directement dans le tex
 
 ---
 
-## Info :
+## Info !:
 
 Ceci est un prototype : pour le moment cette extention ne permet pas de supprimer les données enregistrer dans le storage locale de chrome 
 
@@ -39,11 +39,11 @@ Ceci est un prototype : pour le moment cette extention ne permet pas de supprime
 
 ## Suite du Projet
 
-- implementation du bouton gerer : 
-    - panel des data + suppression manuelle
-    - blacklist url
-    - setting auto suppression
-- modifier le fonctionnement de la sauvegarde de position pour la rendre individuellement activable par pages
+- Implémentation du bouton gérer : 
+    - Panel des data + suppression manuelle
+    - Blacklist url
+    - Setting auto suppression
+- Modifier le fonctionnement de la sauvegarde de position pour la rendre individuellement activable par pages
 
 
 

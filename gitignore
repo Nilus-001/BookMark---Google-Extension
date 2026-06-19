@@ -1,18 +1,10 @@
-# IDE
+# WebStorm / JetBrains
 .idea/
-.vscode/
 *.iml
+out/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
-
-# Dépendances (si jamais ajoutées plus tard)
-node_modules/
+# Autres IDE (au cas où)
+.vscode/
 
 # Build / packaging extension
 *.zip

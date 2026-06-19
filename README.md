@@ -4,7 +4,7 @@ Extension Chrome qui permet de **placer des marque-pages directement dans le tex
 
 ---
 
-## Info !:
+## Info !
 
 Ceci est un prototype : pour le moment cette extention ne permet pas de supprimer les données enregistrer dans le storage locale de chrome 
 

@@ -1,0 +1,24 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dépendances (si jamais ajoutées plus tard)
+node_modules/
+
+# Build / packaging extension
+*.zip
+*.crx
+*.pem
+
+# Fichiers temporaires
+*.tmp
+*.bak
